@@ -1,5 +1,5 @@
 import 'reflect-metadata';
-import { DataSource, Connection } from 'typeorm';
+import { DataSource } from 'typeorm';
 import { AdjustmentStock } from './entity/adjustmentstock';
 import { Category } from './entity/Category';
 import { History } from './entity/History';
@@ -18,7 +18,7 @@ import { User } from './entity/User';
 
 export const AppDataSource = new DataSource({
   type: 'postgres',
-  host: 'dpg-cfl3h89mbjsn9efresdg-a',
+  host: 'dpg-cfl3h89mbjsn9efresdg-a.singapore-postgres.render.com',
   port: 5432,
   username: 'sdrug556',
   password: 'NW5gyKchOhjejUjpGy1twrWNAJc3xHkA',

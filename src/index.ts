@@ -1,4 +1,4 @@
-import { createPostgresDatabase, checkDatabase } from 'typeorm-extension';
+import { createPostgresDatabase } from 'typeorm-extension';
 import app from './app';
 import { config } from './app.config';
 import { AppDataSource } from './data-source';
