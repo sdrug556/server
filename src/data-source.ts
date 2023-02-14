@@ -19,6 +19,7 @@ import { User } from './entity/User';
 // postgres://sdrug556:NW5gyKchOhjejUjpGy1twrWNAJc3xHkA@dpg-cfl3h89mbjsn9efresdg-a/pos_recu
 // external
 // postgres://sdrug556:NW5gyKchOhjejUjpGy1twrWNAJc3xHkA@dpg-cfl3h89mbjsn9efresdg-a.singapore-postgres.render.com/pos_recu
+console.log(process.env);
 export const AppDataSource = new DataSource({
   type: 'postgres',
   host: 'dpg-cfl3h89mbjsn9efresdg-a.singapore-postgres.render.com',
