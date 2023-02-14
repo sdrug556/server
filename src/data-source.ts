@@ -18,12 +18,11 @@ import { User } from './entity/User';
 
 export const AppDataSource = new DataSource({
   type: 'postgres',
-  host: 'dpg-cfl33p9mbjsn9efp9hlg-a',
+  host: 'dpg-cfl3h89mbjsn9efresdg-a',
   port: 5432,
-  username: 'admin',
-  password: 'KBaNNAj0nORbxVWoa0IWnVgEprfPWdPd',
-  // url: 'postgres://sdrug556:NW5gyKchOhjejUjpGy1twrWNAJc3xHkA@dpg-cfl3h89mbjsn9efresdg-a/pos_recu',
-  database: 'pos_podi',
+  username: 'sdrug556',
+  password: 'NW5gyKchOhjejUjpGy1twrWNAJc3xHkA',
+  database: 'pos_recu',
   entities: [
     User,
     Category,
