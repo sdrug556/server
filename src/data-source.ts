@@ -15,11 +15,13 @@ import { User } from './entity/User';
 //   port: 5432
 // })
 // a.dropDatabase
-// postgres://sdrug556:NW5gyKchOhjejUjpGy1twrWNAJc3xHkA@dpg-cfl3h89mbjsn9efresdg-a.singapore-postgres.render.com/pos_recu
+// internal
 // postgres://sdrug556:NW5gyKchOhjejUjpGy1twrWNAJc3xHkA@dpg-cfl3h89mbjsn9efresdg-a/pos_recu
+// external
+// postgres://sdrug556:NW5gyKchOhjejUjpGy1twrWNAJc3xHkA@dpg-cfl3h89mbjsn9efresdg-a.singapore-postgres.render.com/pos_recu
 export const AppDataSource = new DataSource({
   type: 'postgres',
-  host: 'dpg-cfl3h89mbjsn9efresdg-a',
+  host: 'dpg-cfl3h89mbjsn9efresdg-a.singapore-postgres.render.com',
   port: 5432,
   username: 'sdrug556',
   password: 'NW5gyKchOhjejUjpGy1twrWNAJc3xHkA',
