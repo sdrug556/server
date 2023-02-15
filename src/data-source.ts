@@ -39,9 +39,14 @@ const entities = [
   Sales,
 ];
 
+if (Boolean(process.env.APP_DATASOURCE_URL)) {
+  console.log(`Database url found: ${process.env.APP_DATASOURCE_URL}, will use this config`);
+}
+
+
 const config: DataSourceOptions = Boolean(process.env.APP_DATASOURCE_URL) ? {
   type: 'postgres',
-  name: process.env.APP_NAME, // 'pos-postgres',
+  // name: process.env.APP_NAME, // 'pos-postgres',
   url: process.env.APP_DATASOURCE_URL,
   entities,
   migrations: [],
