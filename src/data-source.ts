@@ -19,14 +19,6 @@ import { User } from './entity/User';
 // postgres://sdrug556:NW5gyKchOhjejUjpGy1twrWNAJc3xHkA@dpg-cfl3h89mbjsn9efresdg-a/pos_recu
 // external
 // postgres://sdrug556:NW5gyKchOhjejUjpGy1twrWNAJc3xHkA@dpg-cfl3h89mbjsn9efresdg-a.singapore-postgres.render.com/pos_recu
-console.log({
-  name: process.env.APP_NAME, // 'pos-postgres',
-  host: process.env.APP_HOST,
-  port: parseInt(process.env.APP_PORT),
-  username: process.env.APP_USERNAME,
-  password: process.env.APP_PASSWORD,
-  database: process.env.APP_DATABASE,
-});
 
 const entities = [
   User,
@@ -43,6 +35,15 @@ if (Boolean(process.env.APP_DATASOURCE_URL)) {
   console.log(`Database url found: ${process.env.APP_DATASOURCE_URL}, will use this config`);
 }
 
+export const isDevelopment = !Boolean(process.env.APP_NAME);
+if (isDevelopment) {
+  process.env.APP_HOST = 'localhost';
+  process.env.APP_PORT = '5432';
+  process.env.APP_USERNAME = 'postgres';
+  process.env.APP_PASSWORD = 'A1a$';
+  process.env.APP_DATABASE = 'pos';
+}
+
 
 const config: DataSourceOptions = Boolean(process.env.APP_DATASOURCE_URL) ? {
   type: 'postgres',
@@ -52,12 +53,11 @@ const config: DataSourceOptions = Boolean(process.env.APP_DATASOURCE_URL) ? {
   migrations: [],
   subscribers: [],
   connectTimeoutMS: 7200,
-  ssl: true,
+  ssl: isDevelopment,
   maxQueryExecutionTime: 7200,
-  synchronize: true,
 } : {
   type: 'postgres',
-  name: process.env.APP_NAME, // 'pos-postgres',
+  name: process.env.APP_NAME,
   host: process.env.APP_HOST,
   port: parseInt(process.env.APP_PORT),
   username: process.env.APP_USERNAME,
@@ -67,9 +67,8 @@ const config: DataSourceOptions = Boolean(process.env.APP_DATASOURCE_URL) ? {
   migrations: [],
   subscribers: [],
   connectTimeoutMS: 7200,
-  ssl: true,
+  // ssl: true,
   maxQueryExecutionTime: 7200,
 }
-
 
 export const AppDataSource = new DataSource(config);
