@@ -44,9 +44,11 @@ async function addAdminUser(): Promise<void> {
         })
         .catch((error) => console.log('my error: ', error));
   }
+  
   if (!isDevelopment) {
     return initializeDatabase();
   }
+
   const result = await checkDatabase({
     dataSource: AppDataSource,
   })

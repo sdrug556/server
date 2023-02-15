@@ -8,6 +8,7 @@ export class AuthController {
     res: Response,
     next: NextFunction
   ) {
+    console.log(req.body);
     if (!req.body?.email && !req.body?.password) {
       res.status(401);
     } else {

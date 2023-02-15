@@ -70,5 +70,5 @@ const config: DataSourceOptions = Boolean(process.env.APP_DATASOURCE_URL) ? {
   ssl: !isDevelopment,
   maxQueryExecutionTime: 7200,
 }
-
+console.log(config);
 export const AppDataSource = new DataSource(config);

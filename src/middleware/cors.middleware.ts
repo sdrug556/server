@@ -19,6 +19,8 @@ if (Boolean(process.env.APP_CORS)) {
   origins.push(...process.env.APP_CORS.split(','));
 }
 
+console.log(origins);
+
 export class CorsMiddleware {
   public static corsOptions: CorsOptions = {
     origin: origins,

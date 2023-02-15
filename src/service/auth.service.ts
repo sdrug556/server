@@ -12,6 +12,7 @@ export class AuthService {
   }): Promise<string | null> {
     const repo = AppDataSource.getRepository<User>(TABLE_user);
     const user = await repo.findOneBy({ email: data.email, password: data.password });
+    console.log(user);
     if (!user) { return null; }
     await HistoryService.add(user.id, 'Login');
     return sign({ user }, config.jwtSecretKey);
