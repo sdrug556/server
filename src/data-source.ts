@@ -53,7 +53,7 @@ const config: DataSourceOptions = Boolean(process.env.APP_DATASOURCE_URL) ? {
   migrations: [],
   subscribers: [],
   connectTimeoutMS: 7200,
-  ssl: isDevelopment,
+  ssl: !isDevelopment,
   maxQueryExecutionTime: 7200,
 } : {
   type: 'postgres',
@@ -67,7 +67,7 @@ const config: DataSourceOptions = Boolean(process.env.APP_DATASOURCE_URL) ? {
   migrations: [],
   subscribers: [],
   connectTimeoutMS: 7200,
-  // ssl: true,
+  ssl: !isDevelopment,
   maxQueryExecutionTime: 7200,
 }
 
