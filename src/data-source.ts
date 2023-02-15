@@ -52,6 +52,8 @@ const config: DataSourceOptions = Boolean(process.env.APP_DATASOURCE_URL) ? {
   migrations: [],
   subscribers: [],
   connectTimeoutMS: 7200,
+  ssl: true,
+  maxQueryExecutionTime: 7200,
 } : {
   type: 'postgres',
   name: process.env.APP_NAME, // 'pos-postgres',
@@ -64,6 +66,8 @@ const config: DataSourceOptions = Boolean(process.env.APP_DATASOURCE_URL) ? {
   migrations: [],
   subscribers: [],
   connectTimeoutMS: 7200,
+  ssl: true,
+  maxQueryExecutionTime: 7200,
 }
 
 
