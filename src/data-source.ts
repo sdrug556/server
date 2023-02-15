@@ -19,14 +19,22 @@ import { User } from './entity/User';
 // postgres://sdrug556:NW5gyKchOhjejUjpGy1twrWNAJc3xHkA@dpg-cfl3h89mbjsn9efresdg-a/pos_recu
 // external
 // postgres://sdrug556:NW5gyKchOhjejUjpGy1twrWNAJc3xHkA@dpg-cfl3h89mbjsn9efresdg-a.singapore-postgres.render.com/pos_recu
-console.log(process.env);
+console.log({
+  name: process.env.APP_NAME, // 'pos-postgres',
+  host: process.env.APP_HOST,
+  port: parseInt(process.env.APP_PORT),
+  username: process.env.APP_USERNAME,
+  password: process.env.APP_PASSWORD,
+  database: process.env.APP_DATABASE,
+});
 export const AppDataSource = new DataSource({
   type: 'postgres',
-  host: 'dpg-cfl3h89mbjsn9efresdg-a.singapore-postgres.render.com',
-  port: 5432,
-  username: 'sdrug556',
-  password: 'NW5gyKchOhjejUjpGy1twrWNAJc3xHkA',
-  database: 'pos_recu',
+  name: process.env.APP_NAME, // 'pos-postgres',
+  host: process.env.APP_HOST,
+  port: parseInt(process.env.APP_PORT),
+  username: process.env.APP_USERNAME,
+  password: process.env.APP_PASSWORD,
+  database: process.env.APP_DATABASE,
   entities: [
     User,
     Category,
