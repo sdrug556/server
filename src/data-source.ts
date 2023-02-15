@@ -1,5 +1,5 @@
 import 'reflect-metadata';
-import { DataSource } from 'typeorm';
+import { DataSource, DataSourceOptions } from 'typeorm';
 import { AdjustmentStock } from './entity/adjustmentstock';
 import { Category } from './entity/Category';
 import { History } from './entity/History';
@@ -27,7 +27,26 @@ console.log({
   password: process.env.APP_PASSWORD,
   database: process.env.APP_DATABASE,
 });
-export const AppDataSource = new DataSource({
+
+const entities = [
+  User,
+  Category,
+  Invoice,
+  Product,
+  Supplier,
+  AdjustmentStock,
+  History,
+  Sales,
+];
+
+const config: DataSourceOptions = Boolean(process.env.APP_DATASOURCE_URL) ? {
+  type: 'postgres',
+  name: process.env.APP_NAME, // 'pos-postgres',
+  url: process.env.APP_DATASOURCE_URL,
+  entities,
+  migrations: [],
+  subscribers: [],
+} : {
   type: 'postgres',
   name: process.env.APP_NAME, // 'pos-postgres',
   host: process.env.APP_HOST,
@@ -35,16 +54,10 @@ export const AppDataSource = new DataSource({
   username: process.env.APP_USERNAME,
   password: process.env.APP_PASSWORD,
   database: process.env.APP_DATABASE,
-  entities: [
-    User,
-    Category,
-    Invoice,
-    Product,
-    Supplier,
-    AdjustmentStock,
-    History,
-    Sales,
-  ],
+  entities,
   migrations: [],
   subscribers: [],
-});
+}
+
+
+export const AppDataSource = new DataSource(config);
