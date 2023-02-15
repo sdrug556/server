@@ -50,21 +50,21 @@ async function addAdminUser(): Promise<void> {
   // if (result.exists) {
   //   return initializeDatabase();
   // }
-  initializeDatabase();
-  // createPostgresDatabase({
-  //   ifNotExist: true,
-  //   initialDatabase: 'postgres',
-  //   synchronize: false,
-  //   options: {
-  //     ...config.database,
-  //     type: 'postgres',
-  //   },
-  // })
-  //   .then(() => {
-  //     console.log('my database successfully initialized!');
-  //     initializeDatabase();
-  //   })
-  //   .catch((err) => {
-  //     console.log('my create database error: ', err);
-  //   });
+  createPostgresDatabase({
+    ifNotExist: true,
+    initialDatabase: 'postgres',
+    synchronize: false,
+    options: {
+      ...config.database,
+      type: 'postgres',
+      logging: 'all',
+    },
+  })
+    .then(() => {
+      console.log('my database successfully initialized!');
+      initializeDatabase();
+    })
+    .catch((err) => {
+      console.log('my create database error: ', err);
+    });
 })();
