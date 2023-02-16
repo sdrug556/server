@@ -1,7 +1,7 @@
 import { AuthController } from '../controllers/auth.controller';
 import { Router } from 'express';
 import { JwtMiddleware } from '../middleware/jwt.middleware';
-import { CorsMiddleware } from 'src/middleware/cors.middleware';
+import { CorsMiddleware } from '../middleware/cors.middleware';
 
 const authRoute = Router();
 
