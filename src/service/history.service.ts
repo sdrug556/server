@@ -22,12 +22,12 @@ export class HistoryService {
     });
   }
 
-  static async add(userId: number, action: string): Promise<boolean> {
+  static async add(userId: number, action: string, date?: number): Promise<boolean> {
     const repo = AppDataSource.getRepository(History);
     const history = repo.create({
       userId,
       action,
-      createdDate: dateNowUTC()
+      createdDate: date ?? dateNowUTC()
     });
     await repo.manager.save(history);
     return true;

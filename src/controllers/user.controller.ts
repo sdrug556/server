@@ -39,7 +39,7 @@ export class UserController {
     next: NextFunction
   ) {
     try {
-      await UserService.update(+req.query.id, req.body as any);
+      await UserService.update(+req.params.id, req.body as any);
       res.status(200);
       next();
     } catch (e) {

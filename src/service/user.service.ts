@@ -25,7 +25,7 @@ export class UserService {
     const repo = AppDataSource.getRepository(User);
     const userData = await repo.findOneByOrFail({ id });
     if (!userData) { throw new Error('user not found'); }
-    await repo.manager.save({ ...userData, ...user });
+    await repo.manager.save(repo.create({ ...userData, ...user }));
     return true;
   }
 

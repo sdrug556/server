@@ -24,11 +24,11 @@ export class SupplierService {
     return newSupplier.id;
   }
 
-  static async update(id: number, product: Partial<Supplier>): Promise<boolean> {
+  static async update(id: number, supplier: Partial<Supplier>): Promise<boolean> {
     const repo = AppDataSource.getRepository(Supplier);
     const supplierData = await repo.findOneByOrFail({ id });
-    if (!supplierData) { throw new Error('product not found'); }
-    await repo.manager.save(repo.create({ ...supplierData as any, ...product }));
+    if (!supplierData) { throw new Error('Supplier not found'); }
+    await repo.manager.save(repo.create({ ...supplierData as any, ...supplier }));
     return true;
   }
 

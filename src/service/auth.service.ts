@@ -9,12 +9,12 @@ export class AuthService {
   static async login(data: {
     email: string;
     password: string;
+    datenow: number;
   }): Promise<string | null> {
     const repo = AppDataSource.getRepository<User>(TABLE_user);
     const user = await repo.findOneBy({ email: data.email, password: data.password });
-    console.log(user);
     if (!user) { return null; }
-    await HistoryService.add(user.id, 'Login');
+    await HistoryService.add(user.id, 'Login', data.datenow);
     return sign({ user }, config.jwtSecretKey);
   }
 
