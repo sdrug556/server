@@ -11,26 +11,36 @@ import productRoute from './routes/product.route';
 import saleRoute from './routes/sales.route';
 import supplierRoute from './routes/supplier.route';
 import userRoute from './routes/user.route';
+import cors from 'cors';
 
 const app = express();
 
 // app.use(CorsMiddleware.cors());
+app.options('*', cors({
+  origin: '*'
+}));
+
+
 
 app.use(express.json());
 
-app.use('/', express.static(join(__dirname, '..', 'public')));
+const defaultRoute = Router().get(
+  '/',
+  (req: Request, res: Response, next: NextFunction) => {
+    res
+    .status(200)
+    .send(`App running in port: ${config.port}`);
+    next();
+  },
+);
 
-// const defaultRoute = Router().get(
-//   '/',
-//   (req: Request, res: Response, next: NextFunction) => {
-//     res
-//     .status(200)
-//     .send(`App running in port: ${config.port}`);
-//     next();
-//   },
-// );
+app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", '*');
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+})
 
-// app.use(defaultRoute);
+app.use(defaultRoute);
 app.use(authRoute);
 app.use(userRoute);
 app.use(productRoute);

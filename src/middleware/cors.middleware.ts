@@ -1,5 +1,4 @@
 import cors, { CorsOptions } from 'cors';
-import { NextFunction } from 'express';
 
 const origins = [
   'http://localhost:4200',
@@ -25,15 +24,10 @@ console.log(origins);
 export class CorsMiddleware {
   public static corsOptions: CorsOptions = {
     origin: origins,
-    optionsSuccessStatus: 204,
-    credentials: true,
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
   };
 
   public static cors() {
-    return (req: Request, res: Response, next: NextFunction) => {
-      next();
-    };
-    // return cors(CorsMiddleware.corsOptions);
+    return cors(CorsMiddleware.corsOptions);
   }
 }
