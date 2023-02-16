@@ -5,13 +5,13 @@ import { JwtMiddleware } from '../middleware/jwt.middleware';
 
 const userRoute = Router();
 
-userRoute.get('/user', JwtMiddleware.verify, CorsMiddleware.cors, UserController.getAll);
+userRoute.get('/api/user', JwtMiddleware.verify, UserController.getAll);
 
-userRoute.post('/user', JwtMiddleware.verify, CorsMiddleware.cors, UserController.create);
+userRoute.post('/api/user', JwtMiddleware.verify, UserController.create);
 
-userRoute.put('/user/:id', JwtMiddleware.verify, CorsMiddleware.cors, UserController.update);
+userRoute.put('/api/user/:id', JwtMiddleware.verify, UserController.update);
 
-userRoute.delete('/user/:id', JwtMiddleware.verify, CorsMiddleware.cors, UserController.delete);
+userRoute.delete('/api/user/:id', JwtMiddleware.verify, UserController.delete);
 
 export default userRoute;
 

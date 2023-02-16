@@ -5,8 +5,8 @@ import { CorsMiddleware } from '../middleware/cors.middleware';
 
 const authRoute = Router();
 
-authRoute.post('/login', AuthController.login);
+authRoute.post('/api/login', AuthController.login);
 
-authRoute.get('/logout', JwtMiddleware.verify, CorsMiddleware.cors, AuthController.logout);
+authRoute.get('/api/logout', JwtMiddleware.verify, AuthController.logout);
 
 export default authRoute;

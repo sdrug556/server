@@ -5,6 +5,6 @@ import { JwtMiddleware } from '../middleware/jwt.middleware';
 
 const historyRoute = Router();
 
-historyRoute.get('/history/login', JwtMiddleware.verify, CorsMiddleware.cors, HistoryController.getAll);
+historyRoute.get('/api/history/login', JwtMiddleware.verify, HistoryController.getAll);
 
 export default historyRoute;

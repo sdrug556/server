@@ -5,12 +5,12 @@ import { JwtMiddleware } from '../middleware/jwt.middleware';
 
 const saleRoute = Router();
 
-saleRoute.get('/sale/today', JwtMiddleware.verify, CorsMiddleware.cors, SaleController.today);
+saleRoute.get('/api/sale/today', JwtMiddleware.verify, SaleController.today);
 
-saleRoute.get('/sale', JwtMiddleware.verify, CorsMiddleware.cors, SaleController.get);
+saleRoute.get('/api/sale', JwtMiddleware.verify, SaleController.get);
 
-saleRoute.post('/sale/cancel', JwtMiddleware.verify, CorsMiddleware.cors, SaleController.cancel);
+saleRoute.post('/api/sale/cancel', JwtMiddleware.verify, SaleController.cancel);
 
-saleRoute.post('/sale', JwtMiddleware.verify, CorsMiddleware.cors, SaleController.create);
+saleRoute.post('/api/sale', JwtMiddleware.verify, SaleController.create);
 
 export default saleRoute;

@@ -1,3 +1,4 @@
+import { join } from 'path';
 import express, { NextFunction, Request, Response, Router } from 'express';
 import { config } from './app.config';
 import { CorsMiddleware } from './middleware/cors.middleware';
@@ -17,17 +18,19 @@ app.use(CorsMiddleware.cors());
 
 app.use(express.json());
 
-const defaultRoute = Router().get(
-  '/',
-  (req: Request, res: Response, next: NextFunction) => {
-    res
-    .status(200)
-    .send(`App running in port: ${config.port}`);
-    next();
-  },
-);
+app.use('/', express.static(join(__dirname, '..', 'public')));
 
-app.use(defaultRoute);
+// const defaultRoute = Router().get(
+//   '/',
+//   (req: Request, res: Response, next: NextFunction) => {
+//     res
+//     .status(200)
+//     .send(`App running in port: ${config.port}`);
+//     next();
+//   },
+// );
+
+// app.use(defaultRoute);
 app.use(authRoute);
 app.use(userRoute);
 app.use(productRoute);

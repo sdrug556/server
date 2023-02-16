@@ -5,14 +5,14 @@ import { JwtMiddleware } from '../middleware/jwt.middleware';
 
 const productRoute = Router();
 
-productRoute.get('/product/supplier/:id', JwtMiddleware.verify, CorsMiddleware.cors, ProductController.getAllBySupplierId);
+productRoute.get('/api/product/supplier/:id', JwtMiddleware.verify, ProductController.getAllBySupplierId);
 
-productRoute.get('/product', JwtMiddleware.verify, CorsMiddleware.cors, ProductController.getAll);
+productRoute.get('/api/product', JwtMiddleware.verify, ProductController.getAll);
 
-productRoute.post('/product', JwtMiddleware.verify, CorsMiddleware.cors, ProductController.create);
+productRoute.post('/api/product', JwtMiddleware.verify, ProductController.create);
 
-productRoute.put('/product/:id', JwtMiddleware.verify, CorsMiddleware.cors, ProductController.update);
+productRoute.put('/api/product/:id', JwtMiddleware.verify, ProductController.update);
 
-productRoute.delete('/product/:id', JwtMiddleware.verify, CorsMiddleware.cors, ProductController.delete);
+productRoute.delete('/api/product/:id', JwtMiddleware.verify, ProductController.delete);
 
 export default productRoute;

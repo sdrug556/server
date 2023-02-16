@@ -5,13 +5,13 @@ import { JwtMiddleware } from '../middleware/jwt.middleware';
 
 const supplierRoute = Router();
 
-supplierRoute.get('/supplier', JwtMiddleware.verify, CorsMiddleware.cors, SupplierController.getAll);
+supplierRoute.get('/api/supplier', JwtMiddleware.verify, SupplierController.getAll);
 
-supplierRoute.post('/supplier', JwtMiddleware.verify, CorsMiddleware.cors, SupplierController.create);
+supplierRoute.post('/api/supplier', JwtMiddleware.verify, SupplierController.create);
 
-supplierRoute.put('/supplier/:id', JwtMiddleware.verify, CorsMiddleware.cors, SupplierController.update);
+supplierRoute.put('/api/supplier/:id', JwtMiddleware.verify, SupplierController.update);
 
-supplierRoute.delete('/supplier/:id', JwtMiddleware.verify, CorsMiddleware.cors, SupplierController.delete);
+supplierRoute.delete('/api/supplier/:id', JwtMiddleware.verify, SupplierController.delete);
 
 export default supplierRoute;
 

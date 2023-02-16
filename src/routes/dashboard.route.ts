@@ -5,6 +5,6 @@ import { JwtMiddleware } from '../middleware/jwt.middleware';
 
 const dashboardRoute = Router();
 
-dashboardRoute.get('/dashboard', JwtMiddleware.verify, CorsMiddleware.cors, DashboardController.get);
+dashboardRoute.get('/api/dashboard', JwtMiddleware.verify, DashboardController.get);
 
 export default dashboardRoute;

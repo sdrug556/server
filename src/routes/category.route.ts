@@ -5,13 +5,13 @@ import { JwtMiddleware } from '../middleware/jwt.middleware';
 
 const categoryRoute = Router();
 
-categoryRoute.get('/category', JwtMiddleware.verify, CorsMiddleware.cors, CategoryController.getAll);
+categoryRoute.get('/api/category', JwtMiddleware.verify, CategoryController.getAll);
 
-categoryRoute.post('/category', JwtMiddleware.verify, CorsMiddleware.cors, CategoryController.create);
+categoryRoute.post('/api/category', JwtMiddleware.verify, CategoryController.create);
 
-categoryRoute.put('/category/:id', JwtMiddleware.verify, CorsMiddleware.cors, CategoryController.update);
+categoryRoute.put('/api/category/:id', JwtMiddleware.verify, CategoryController.update);
 
-categoryRoute.delete('/category/:id', JwtMiddleware.verify, CorsMiddleware.cors, CategoryController.delete);
+categoryRoute.delete('/api/category/:id', JwtMiddleware.verify, CategoryController.delete);
 
 export default categoryRoute;
 

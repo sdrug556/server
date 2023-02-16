@@ -5,9 +5,9 @@ import { CorsMiddleware } from '../middleware/cors.middleware';
 
 const adjustmentstockRoute = Router();
 
-adjustmentstockRoute.get('/adjustmentstock', JwtMiddleware.verify, CorsMiddleware.cors, AdjustmentStockController.getAll);
+adjustmentstockRoute.get('/api/adjustmentstock', JwtMiddleware.verify, AdjustmentStockController.getAll);
 
-adjustmentstockRoute.post('/adjustmentstock', JwtMiddleware.verify, CorsMiddleware.cors, AdjustmentStockController.create);
+adjustmentstockRoute.post('/api/adjustmentstock', JwtMiddleware.verify, AdjustmentStockController.create);
 
 export default adjustmentstockRoute;
 

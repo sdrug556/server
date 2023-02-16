@@ -1,4 +1,5 @@
 import cors, { CorsOptions } from 'cors';
+import { NextFunction } from 'express';
 
 const origins = [
   'http://localhost:4200',
@@ -30,6 +31,9 @@ export class CorsMiddleware {
   };
 
   public static cors() {
-    return cors(CorsMiddleware.corsOptions);
+    return (req: Request, res: Response, next: NextFunction) => {
+      next();
+    };
+    // return cors(CorsMiddleware.corsOptions);
   }
 }
