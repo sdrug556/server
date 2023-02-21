@@ -20,7 +20,7 @@ export class SaleService extends BaseService<Sales> {
 
   static async get(): Promise<any[]> {
     const query = `
-      SELECT sales.id, sales.price, sales.quantity, sales."invoiceNumber" , sales.discount, sales."createdDate" ,
+      SELECT sales.id, sales.price, sales.quantity, sales."invoiceNumber" , sales.discount, sales."createdDate" , sales."cash", 
              product."name" "productName", product.supplier , product.category,
              CONCAT("firstName", ' ', "lastName") name
       FROM "${TABLE_sales}" sales

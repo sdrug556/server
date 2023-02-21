@@ -42,4 +42,7 @@ export class User {
   @Column('bigint')
   createdDate: number;
 
+  @Column('boolean', { nullable: true })
+  isOwner: boolean;
+
 }

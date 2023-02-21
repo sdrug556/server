@@ -28,5 +28,8 @@ export class Sales {
   @Column('int')
   createdBy: number;
 
+  @Column('bigint', { nullable: true })
+  cash: number;
+
 }
 

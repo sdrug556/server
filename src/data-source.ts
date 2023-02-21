@@ -4,6 +4,7 @@ import { AdjustmentStock } from './entity/adjustmentstock';
 import { Category } from './entity/Category';
 import { History } from './entity/History';
 import { Invoice } from './entity/Invoice';
+import { Notes } from './entity/Notes';
 import { Product } from './entity/Product';
 import { Sales } from './entity/Sales';
 import { Supplier } from './entity/Supplier';
@@ -29,10 +30,13 @@ const entities = [
   AdjustmentStock,
   History,
   Sales,
+  Notes,
 ];
 
 if (Boolean(process.env.APP_DATASOURCE_URL)) {
-  console.log(`Database url found: ${process.env.APP_DATASOURCE_URL}, will use this config`);
+  console.log(
+    `Database url found: ${process.env.APP_DATASOURCE_URL}, will use this config`,
+  );
 }
 
 export const isDevelopment = !Boolean(process.env.APP_NAME);
@@ -44,31 +48,32 @@ if (isDevelopment) {
   process.env.APP_DATABASE = 'pos';
 }
 
-
-const config: DataSourceOptions = Boolean(process.env.APP_DATASOURCE_URL) ? {
-  type: 'postgres',
-  // name: process.env.APP_NAME, // 'pos-postgres',
-  url: process.env.APP_DATASOURCE_URL,
-  entities,
-  migrations: [],
-  subscribers: [],
-  connectTimeoutMS: 7200,
-  ssl: !isDevelopment,
-  maxQueryExecutionTime: 7200,
-} : {
-  type: 'postgres',
-  name: process.env.APP_NAME,
-  host: process.env.APP_HOST,
-  port: parseInt(process.env.APP_PORT),
-  username: process.env.APP_USERNAME,
-  password: process.env.APP_PASSWORD,
-  database: process.env.APP_DATABASE,
-  entities,
-  migrations: [],
-  subscribers: [],
-  connectTimeoutMS: 7200,
-  ssl: !isDevelopment,
-  maxQueryExecutionTime: 7200,
-}
+const config: DataSourceOptions = Boolean(process.env.APP_DATASOURCE_URL)
+  ? {
+      type: 'postgres',
+      // name: process.env.APP_NAME, // 'pos-postgres',
+      url: process.env.APP_DATASOURCE_URL,
+      entities,
+      migrations: [],
+      subscribers: [],
+      connectTimeoutMS: 7200,
+      ssl: !isDevelopment,
+      maxQueryExecutionTime: 7200,
+    }
+  : {
+      type: 'postgres',
+      name: process.env.APP_NAME,
+      host: process.env.APP_HOST,
+      port: parseInt(process.env.APP_PORT),
+      username: process.env.APP_USERNAME,
+      password: process.env.APP_PASSWORD,
+      database: process.env.APP_DATABASE,
+      entities,
+      migrations: [],
+      subscribers: [],
+      connectTimeoutMS: 7200,
+      ssl: !isDevelopment,
+      maxQueryExecutionTime: 7200,
+    };
 console.log(config);
 export const AppDataSource = new DataSource(config);

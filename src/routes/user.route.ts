@@ -1,5 +1,4 @@
 import { Router } from 'express';
-import { CorsMiddleware } from '../middleware/cors.middleware';
 import { UserController } from '../controllers/user.controller';
 import { JwtMiddleware } from '../middleware/jwt.middleware';
 
