@@ -39,5 +39,8 @@ export class Product {
   @Column('boolean')
   isDeleted: boolean;
 
+  @Column('text', { nullable: true })
+  barcode: string;
+
 }
 
