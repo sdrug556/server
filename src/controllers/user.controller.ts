@@ -54,7 +54,7 @@ export class UserController {
     next: NextFunction
   ) {
     try {
-      await UserService.delete(+req.query.id);
+      await UserService.delete(+req.params.id);
       res.status(200);
       next();
     } catch (e) {

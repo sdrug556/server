@@ -6,7 +6,11 @@ export class UserService {
 
   static async getAll(): Promise<User[]> {
     const repo = AppDataSource.getRepository(User);
-    return await repo.find();
+    return await repo.find({
+      where: {
+        isDeleted: false
+      }
+    });
   }
   
   static async create(user: User): Promise<number> {
@@ -30,6 +34,7 @@ export class UserService {
   }
 
   static async delete(id: number): Promise<boolean> {
+    console.log(id);
     return this.update(id, { isDeleted: true })
   }
 
