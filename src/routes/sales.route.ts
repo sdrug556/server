@@ -12,4 +12,8 @@ saleRoute.post('/api/sale/cancel', JwtMiddleware.verify, SaleController.cancel);
 
 saleRoute.post('/api/sale', JwtMiddleware.verify, SaleController.create);
 
+saleRoute.get('/api/sale/closing', JwtMiddleware.verify, SaleController.getClosingSales);
+
+saleRoute.post('/api/sale/closing', JwtMiddleware.verify, SaleController.addClosingSales);
+
 export default saleRoute;

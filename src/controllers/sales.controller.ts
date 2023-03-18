@@ -59,5 +59,33 @@ export class SaleController {
     next();
   }
 
+  static async getClosingSales(
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ) {
+    try {
+      res.status(200).json(await SaleService.getClosingSales());
+    } catch (e) {
+      console.log(e);
+      res.status(500).json(e);
+    }
+    next();
+  }
+
+  static async addClosingSales(
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ) {
+    try {
+      res.status(200).json(await SaleService.addClosingSales(req.body));
+    } catch (e) {
+      console.log(e);
+      res.status(500).json(e);
+    }
+    next();
+  }
+
 }
 

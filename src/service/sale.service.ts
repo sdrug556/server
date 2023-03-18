@@ -5,6 +5,7 @@ import { Product, TABLE_product } from '../entity/Product';
 import { In } from 'typeorm';
 import { endOfToday, startOfToday } from 'date-fns';
 import { User, TABLE_user } from '../entity/User';
+import { Bills, TABLE_bills } from '../entity/Bills';
 
 interface CancelInfo {
   addToInventory: boolean;
@@ -102,6 +103,23 @@ export class SaleService extends BaseService<Sales> {
     }
     return true;
   }
+
+  static async addClosingSales(bill: Bills): Promise<boolean> {
+    const billsRepo = AppDataSource.getRepository(Bills);
+    billsRepo.save(billsRepo.create(bill));
+    return true;
+  }
+
+  static async getClosingSales(): Promise<any[]> {
+    const query = `
+      SELECT bills."id", "shiftNumber", "userId", "openingCash", "closingCash", "oneThou", "fiveHundred", "twoHundred", "oneHundred", fifty, ten, five, one, "twentyFiveCents", bills."createdDate", u."firstName", u."lastName"
+  
+      FROM public.${TABLE_bills} 
+      INNER JOIN public."user" u on u."id" = bills."userId";
+    `;
+    return await AppDataSource.query(query);
+  }
+
 }
 
 

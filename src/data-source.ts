@@ -1,6 +1,7 @@
 import 'reflect-metadata';
 import { DataSource, DataSourceOptions } from 'typeorm';
 import { AdjustmentStock } from './entity/adjustmentstock';
+import { Bills } from './entity/Bills';
 import { Category } from './entity/Category';
 import { History } from './entity/History';
 import { Invoice } from './entity/Invoice';
@@ -31,6 +32,7 @@ const entities = [
   History,
   Sales,
   Notes,
+  Bills,
 ];
 
 if (Boolean(process.env.APP_DATASOURCE_URL)) {

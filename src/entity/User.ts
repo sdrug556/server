@@ -45,4 +45,6 @@ export class User {
   @Column('boolean', { nullable: true })
   isOwner: boolean;
 
+  shiftNumber: string;
+
 }

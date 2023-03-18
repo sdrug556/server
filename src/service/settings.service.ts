@@ -4,7 +4,7 @@ import { Notes } from '../entity/Notes';
 export class SettingsService {
   static async getNote(): Promise<Notes[]> {
     const repo = AppDataSource.getRepository(Notes);
-    return repo.find();
+    return repo.find({});
   }
 
   static async saveNote(notes: Notes[]): Promise<boolean> {

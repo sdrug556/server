@@ -12,9 +12,10 @@ export class AuthService {
     datenow: number;
   }): Promise<string | null> {
     const repo = AppDataSource.getRepository<User>(TABLE_user);
-    const user = await repo.findOneBy({ email: data.email, password: data.password });
+    const user = await repo.findOneBy({ email: data.email, password: data.password, isDeleted: false });
     if (!user) { return null; }
-    await HistoryService.add(user.id, 'Login', data.datenow);
+    const history = await HistoryService.add(user.id, 'Login', data.datenow);
+    user.shiftNumber = 'ShiftNo-' + history.id;
     return sign({ user }, config.jwtSecretKey);
   }
 

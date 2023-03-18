@@ -18,7 +18,7 @@ export class Product {
   @Column('int')
   supplier: number;
 
-  @Column('int')
+  @Column('bigint', { nullable: true })
   price: number;
 
   @Column('bigint', { nullable: true })
