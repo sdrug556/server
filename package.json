@@ -15,6 +15,7 @@
     "@types/express": "^4.17.13",
     "@types/jsonwebtoken": "^8.5.8",
     "@types/node": "^17.0.25",
+    "@types/nodemailer": "^6.4.7",
     "cors": "^2.8.5",
     "date-fns": "^2.28.0",
     "express": "^4.17.3",
@@ -27,6 +28,7 @@
     "@types/lodash-es": "^4.17.6",
     "lodash-es": "^4.17.21",
     "mysql2": "^2.3.3",
+    "nodemailer": "^6.9.1",
     "reflect-metadata": "^0.1.13",
     "typeorm": "^0.3.12"
   }

@@ -62,6 +62,20 @@ export class SupplierController {
     next();
   }
 
+  static async requestOrder(
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ) {
+    try {
+      await SupplierService.requestOrder(req.body);
+      res.status(200);
+    } catch (e) {
+      console.log(e);
+      res.status(404).json(e);
+    }
+    next();
+  }
 
 }
 
