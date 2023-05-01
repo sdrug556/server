@@ -69,13 +69,13 @@ export class SupplierService {
     var transporter = createTransport({
       service: 'gmail',
       auth: {
-        user: 'sdrug556',
-        pass: 'mbmgxmytugiqxlod',
+        user: 'hypersaverdrugstoresanvicente',
+        pass: 'szfhqgcldpeipivm',
       },
     });
     try {
       const result = await transporter.sendMail({
-        from: 'sdrug556@gmail.com',
+        from: 'hypersaverdrugstoresanvicente@gmail.com',
         to: option.to,
         subject: option.subject,
         html: option.body,
