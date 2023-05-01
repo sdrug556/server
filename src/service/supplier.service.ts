@@ -80,6 +80,7 @@ export class SupplierService {
         subject: option.subject,
         html: option.body,
       });
+      console.log(result);
       return true;
     } catch (e) {
       console.log(e);

@@ -14,6 +14,7 @@ export class HistoryService {
         rh."action" ,
         rh."createdDate" from "${TABLE_History}" rh 
         INNER JOIN "${TABLE_user}" ru ON rh."userId" = ru."id"
+        ORDER BY rh."createdDate";
     `
     const histories = await AppDataSource.query(query);
     return histories.map((history) => {
