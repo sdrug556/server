@@ -12,7 +12,7 @@ export class Product {
   @Column('text', { nullable: true })
   description: string;
 
-  @Column('int')
+  @Column('int', { nullable: true })
   category: number;
 
   @Column('int')

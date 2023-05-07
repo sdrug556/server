@@ -56,6 +56,7 @@ const config: DataSourceOptions = Boolean(process.env.APP_DATASOURCE_URL)
       // name: process.env.APP_NAME, // 'pos-postgres',
       url: process.env.APP_DATASOURCE_URL,
       entities,
+      port: 5432,
       migrations: [],
       subscribers: [],
       connectTimeoutMS: 7200,
@@ -77,5 +78,4 @@ const config: DataSourceOptions = Boolean(process.env.APP_DATASOURCE_URL)
       ssl: !isDevelopment,
       maxQueryExecutionTime: 7200,
     };
-console.log(config);
 export const AppDataSource = new DataSource(config);
