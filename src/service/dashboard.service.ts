@@ -120,7 +120,7 @@ export class DashboardService {
     const repo = AppDataSource.getRepository(Product);
     const products = await repo.find();
     return products.filter((product) => {
-      return product.stock < product.reorderPoint;
+      return product.stock < product.reorderPoint && product.isDeleted === false;
     }).length;
   }
   static async expiredProduct(): Promise<number> {
@@ -128,7 +128,7 @@ export class DashboardService {
     const repo = AppDataSource.getRepository(Product);
     const products = await repo.find();
     return products.filter((product) => {
-      return +product.expiration < today;
+      return +product.expiration < today && product.isDeleted === false;
     }).length;
   }
 }

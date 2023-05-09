@@ -10,11 +10,11 @@ export class DashboardController {
     ) {
         try {
             const result = {
-                salesToday: await DashboardService.salesToday(),
-                salesThisWeek: await DashboardService.salesThisWeek(),
-                salesThisMonth: await DashboardService.salesThisMonth(),
-                salesLastMonth: await DashboardService.salesLastMonth(),
-                salesThisYear: await DashboardService.salesThisYear(),
+                // salesToday: await DashboardService.salesToday(),
+                // salesThisWeek: await DashboardService.salesThisWeek(),
+                // salesThisMonth: await DashboardService.salesThisMonth(),
+                // salesLastMonth: await DashboardService.salesLastMonth(),
+                // salesThisYear: await DashboardService.salesThisYear(),
                 productLowStock: await DashboardService.lowStockProduct(),
                 productExpired: await DashboardService.expiredProduct(),
             }
