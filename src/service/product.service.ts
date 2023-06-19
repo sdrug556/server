@@ -3,19 +3,32 @@ import { AppDataSource } from '../data-source';
 import { Product } from '../entity/Product';
 import { BaseService } from './base-service';
 
+function parsePriceToFloat(price: string): number {
+  try {
+    return parseFloat(price);
+  } catch (e) {
+    return 0;
+  }
+}
+
 export class ProductService extends BaseService<Product> {
 
   REPO_NAME = 'repoProduct';
 
   static async getAll(): Promise<Product[]> {
     const repo = AppDataSource.getRepository(Product);
-    return await repo.find({
+    const products = await repo.find({
       order: {
         id: 'ASC'
       },
       where: {
         isDeleted: false
       }
+    });
+    return products.map((p) => {
+      // @ts-ignore-next
+      p.price = parsePriceToFloat(p.price as string);
+      return p;
     });
   }
   
