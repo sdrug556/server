@@ -15,6 +15,9 @@ export class DashboardController {
                 // salesThisMonth: await DashboardService.salesThisMonth(),
                 // salesLastMonth: await DashboardService.salesLastMonth(),
                 // salesThisYear: await DashboardService.salesThisYear(),
+                supplierCount: await DashboardService.supplierCount(),
+                userCount: await DashboardService.userCount(),
+                productCount: await DashboardService.productCount(),
                 productLowStock: await DashboardService.lowStockProduct(),
                 productExpired: await DashboardService.expiredProduct(),
             }

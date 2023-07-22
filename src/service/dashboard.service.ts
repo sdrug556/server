@@ -8,10 +8,11 @@ import {
   startOfYear,
   endOfYear
 } from 'date-fns';
+import { Supplier } from '../entity/Supplier';
 import { AppDataSource } from '../data-source';
 import { Product, TABLE_product } from '../entity/Product';
 import { TABLE_sales } from '../entity/Sales';
-import { TABLE_user } from '../entity/User';
+import { TABLE_user, User } from '../entity/User';
 
 function caculateProductTotal(
   price: number,
@@ -131,4 +132,24 @@ export class DashboardService {
       return +product.expiration < today && product.isDeleted === false;
     }).length;
   }
+
+  static async productCount(): Promise<number> {
+    const today = Date.now();
+    const repo = AppDataSource.getRepository(Product);
+    const products = await repo.find();
+    return products.filter((product) => product.isDeleted === false)?.length ?? 0;
+  }
+
+  static async userCount(): Promise<number> {
+    const repo = AppDataSource.getRepository(User);
+    const users = await repo.find();
+    return users.filter((user) => !user.isDeleted)?.length ?? 0;
+  }
+
+  static async supplierCount(): Promise<number> {
+    const repo = AppDataSource.getRepository(Supplier);
+    const suppliers = await repo.find();
+    return suppliers.filter((supplier) => !supplier.isDeleted)?.length ?? 0;
+  }
+
 }

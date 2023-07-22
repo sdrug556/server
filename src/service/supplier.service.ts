@@ -10,9 +10,6 @@ export class SupplierService {
       order: {
         id: 'ASC',
       },
-      where: {
-        isDeleted: false,
-      },
     });
   }
 
